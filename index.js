@@ -1,16 +1,15 @@
 const inquirer = require('inquirer');
 const Manager = require('./lib/Manager');
 
-function Profile() {
-    this.Manager;
-}
-
-Profile.prototype.start = function() {
+function Start() {
     console.log(`
         ===================
         Manager Information
         ===================
         `)
+};
+
+Start.prototype.mQuestions = function() {
     return inquirer.prompt({
             type: 'input',
             name: 'Manager Name',
@@ -31,4 +30,5 @@ Profile.prototype.start = function() {
         })
 };
 
-module.exports = Profile();
+
+module.exports = Start();
