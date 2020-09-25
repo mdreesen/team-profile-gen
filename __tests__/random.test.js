@@ -1,3 +1,4 @@
+// Random test to make sure this works
 const checkIfEqual = require('../lib/random');
 
 test('checks if 10 is equal to 10', () => {
