@@ -29,8 +29,8 @@ function managerQuestions() {
 // This is the Engineer questions
 function engineerQuestions(engineerData) {
     // If no engineer data, return nothing
-    if (!engineerData.eProfile) {
-        engineerData.eProfile = [];
+    if (!engineerData.engProfile) {
+        engineerData.engProfile = [];
     };
 
     console.log(`
@@ -66,12 +66,12 @@ function engineerQuestions(engineerData) {
             }
         ])
         .then(portfolioData => {
-            portfolioData.eProfile.push(portfolioData);
+            engineerData.engProfile.push(portfolioData);
 
             if (portfolioData.confirmAddEngineer) {
-                return engineerQuestions(portfolioData);
+                return engineerQuestions(engineerData);
             } else {
-                return portfolioData;
+                return engineerData;
             }
         });
 };
