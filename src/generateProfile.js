@@ -8,7 +8,7 @@ const generateManager = manager => {
         <li class="list-group-item text-dark">Manager's Office Number: ${manager.mOfficeNumber}</li>
     </div>
     `;
-}
+};
 
 const generateEngineer = engineer => {
     return `
@@ -22,8 +22,8 @@ const generateEngineer = engineer => {
                     <li class="list-group-item text-dark">Engineer ID: ${engineer.engineerId}</li>
                 </ul>
                 <div class="card-body">
-                    <a href="#" class="card-link">Engineer Github: https://github.com/${engineer.engineerGithub}</a>
                     <a href="mailto: ${engineer.engineerEmail}" class="card-link">Email</a>
+                    <a href="#" class="card-link">Engineer Github: https://github.com/${engineer.engineerGithub}</a>
                 </div>
                 `;
 };
