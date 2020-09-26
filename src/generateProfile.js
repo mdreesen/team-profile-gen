@@ -67,6 +67,5 @@ module.exports = templateData => {
 </body>
 
 </html>
-}
 `;
 };
