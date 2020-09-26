@@ -2,6 +2,7 @@ const inquirer = require('inquirer');
 const Manager = require('./lib/Manager');
 const generateProfile = require('./src/generateProfile');
 const { writeFile, copyFile } = require('./utils/generate-page');
+const fs = require('fs');
 
 // Questions about the Manager
 function managerQuestions() {
@@ -86,9 +87,8 @@ managerQuestions()
     .then(pageHTML => {
         return writeFile(pageHTML)
     })
-    .then(writeFileResponse => {
-        console.log(writeFileResponse);
-        return copyFile;
+    .then(copyFileResponse => {
+        console.log(copyFileResponse)
     })
     .catch(err => {
         console.log(err);
