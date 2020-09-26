@@ -1,7 +1,10 @@
 const inquirer = require('inquirer');
 const Manager = require('./lib/Manager');
+const generateProfile = require('./src/generateProfile');
+const { writeFile, copyFile } = require('./utils/generate-page');
 
-function Start() {
+// Questions about the Manager
+function managerQuestions() {
     console.log(`
         ===================
         Manager Information
@@ -9,39 +12,87 @@ function Start() {
         `);
 
     return inquirer.prompt([{
-            type: 'input',
-            name: 'Manager Name',
-            message: "What is your Manager's name?"
-        }, {
-            type: 'input',
-            name: 'Manager ID',
-            message: "What is your Manager's ID?"
-        }, {
-            type: 'input',
-            name: 'Manager office number',
-            message: "What is your Manager's office number?"
-        },
-        {
-            type: 'input',
-            name: 'Engineer Name',
-            message: "What is your Engineer's name?"
-        },
-        {
-            type: 'input',
-            name: 'Engineer ID',
-            message: "What is your Engineer's ID?"
-        },
-        {
-            type: 'input',
-            name: 'Engineer Email',
-            message: "What is your Engineer's email?"
-        },
-        {
-            type: 'input',
-            name: 'Engineer Github',
-            message: "What is your Engineer's Github?"
-        }
-    ])
+        type: 'input',
+        name: 'managerName',
+        message: "What is your Manager's name?"
+    }, {
+        type: 'input',
+        name: 'managerId',
+        message: "What is your Manager's ID?"
+    }, {
+        type: 'input',
+        name: 'mOfficeNumber',
+        message: "What is your Manager's office number?"
+    }])
 };
 
-module.exports = Start();
+// This is the Engineer questions
+function engineerQuestions(engineerData) {
+    // If no engineer data, return nothing
+    if (!engineerData.eProfile) {
+        engineerData.eProfile = [];
+    };
+
+    console.log(`
+    ====================
+    Engineer Information
+    ====================
+    `)
+    return inquirer.prompt([{
+                type: 'input',
+                name: 'engineerName',
+                message: "What is your Engineer's name?"
+            },
+            {
+                type: 'input',
+                name: 'engineerId',
+                message: "What is your Engineer's ID?"
+            },
+            {
+                type: 'input',
+                name: 'engineerEmail',
+                message: "What is your Engineer's email?"
+            },
+            {
+                type: 'input',
+                name: 'engineerGithub',
+                message: "What is your Engineer's Github?"
+            },
+            {
+                type: 'confirm',
+                name: 'confirmAddEngineer',
+                message: 'Would you like to add another Engineer?',
+                default: false
+            }
+        ])
+        .then(portfolioData => {
+            portfolioData.eProfile.push(portfolioData);
+
+            if (portfolioData.confirmAddEngineer) {
+                return engineerQuestions(portfolioData);
+            } else {
+                return portfolioData;
+            }
+        });
+};
+
+// starting off with the first set of questions for the Manager
+managerQuestions()
+    // .then() starts with the Engineer questions
+    .then(engineerQuestions)
+    .then(portfolioData => {
+        return generateProfile(portfolioData);
+    })
+    .then(pageHTML => {
+        return writeFile(pageHTML)
+    })
+    .then(writeFileResponse => {
+        console.log(writeFileResponse);
+        return copyFile;
+    })
+    .catch(err => {
+        console.log(err);
+    })
+
+// module.exports = managerQuestions();
+// module.exports = engineerQuestions();
