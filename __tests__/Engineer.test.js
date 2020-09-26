@@ -1,4 +1,3 @@
-const { TestScheduler } = require('jest');
 const Engineer = require('../lib/Engineer');
 
 test('checks for Engineer information', () => {
