@@ -12,23 +12,26 @@ const generateManager = manager => {
 
 const generateEngineer = engineer => {
     return `
-    <div class="card text-white bg-dark mb-3 mt-3 mx-auto" style="width: 18rem;">
-                <i class="fas fa-glasses"></i>
-                <div class="card-body">
-                    <h5 class="card-title">${engineer.engineerName}</h5>
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                </div>
-                <ul class="list-group list-group-flush">
-                    <li class="list-group-item text-dark">Engineer ID: ${engineer.engineerId}</li>
-                </ul>
-                <div class="card-body">
-                    <a href="mailto: ${engineer.engineerEmail}" class="card-link">Email</a>
-                    <a href="#" class="card-link">Engineer Github: https://github.com/${engineer.engineerGithub}</a>
-                </div>
-                `;
+            <div class="card text-white bg-dark mb-3 mt-3 mx-auto" style="width: 18rem;">
+                    <i class="fas fa-glasses"></i>
+                    <div class="card-body">
+                        <h5 class="card-title">${engineer.engineerName}</h5>
+                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                    </div>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item text-dark">Engineer ID: ${engineer.engineerId}</li>
+                    </ul>
+                    <div class="card-body">
+                        <a href="mailto: ${engineer.engineerEmail}" class="card-link">Email</a>
+                        <a href="#" class="card-link">Engineer Github: https://github.com/${engineer.engineerGithub}</a>
+                    </div>
+                    `;
 };
 
 module.exports = templateData => {
+    console.log(templateData);
+    // Make an array that stores all the data for Manager and Engineer
+    // const { manager, engineer, ...intern } = templateData;
     return `
     <!DOCTYPE html>
 <html lang="en">

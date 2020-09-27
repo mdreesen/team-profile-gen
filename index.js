@@ -96,17 +96,17 @@ managerQuestions()
     .then(engineerQuestions)
     // -=- Generate the profiles -=-
     .then(engineerData => {
-        console.log(engineerData);
-        // return generateProfile(engineerData);
+        //console.log(engineerData);
+        return generateProfile(engineerData);
     })
     // -=- Write the file -=-
-    //.then(pageHTML => {
-    //   return writeFile(pageHTML)
-    // })
+    .then(pageHTML => {
+        return writeFile(pageHTML)
+    })
     //-=- Copy the file -=-
-    //.then(copyFileResponse => {
-    //    console.log(copyFileResponse)
-    //})
+    .then(copyFileResponse => {
+        console.log(copyFileResponse)
+    })
     // -=- Catch any error -=-
     .catch(err => {
         console.log(err);
