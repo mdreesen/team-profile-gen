@@ -10,6 +10,7 @@ const generateManager = manager => {
     `;
 };
 
+// This is code to add the Engineers
 const generateEngineer = engineer => {
     return `
             <div class="card text-white bg-dark mb-3 mt-3 mx-auto" style="width: 18rem;">
@@ -27,6 +28,48 @@ const generateEngineer = engineer => {
                     </div>
                     `;
 };
+
+const generateIntern = intern => {
+    return `
+            <div class="card text-white bg-dark mb-3 mt-3 mx-auto" style="width: 18rem;">
+                    <i class="fas fa-glasses"></i>
+                    <div class="card-body">
+                        <h5 class="card-title">${engineer.engineerName}</h5>
+                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                    </div>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item text-dark">Engineer ID: ${engineer.engineerId}</li>
+                    </ul>
+                    <div class="card-body">
+                        <a href="mailto: ${engineer.engineerEmail}" class="card-link">Email</a>
+                        <a href="#" class="card-link">Engineer Github: https://github.com/${engineer.engineerGithub}</a>
+                    </div>
+                    `;
+};
+
+// Down here will be adding more Engineers
+/*
+const generateEngineer2 = engineer2 => {
+    return `
+                <div class="card text-white bg-dark mb-3 mt-3 mx-auto" style="width: 18rem;">
+                        <i class="fas fa-glasses"></i>
+                        <div class="card-body">
+                            <h5 class="card-title">${engineer2.engineerName2}</h5>
+                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                        </div>
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item text-dark">Engineer ID: ${engineer2.engineerId2}</li>
+                        </ul>
+                        <div class="card-body">
+                            <a href="mailto: ${engineer2.engineerEmail2}" class="card-link">Email</a>
+                            <a href="#" class="card-link">Engineer Github: https://github.com/${engineer2.engineerGithub2}</a>
+                        </div>
+                        `;
+
+                                    ${generateEngineer2(templateData)}
+
+};
+*/
 
 module.exports = templateData => {
     console.log(templateData);
@@ -65,6 +108,7 @@ module.exports = templateData => {
         <div class="row">
             ${generateEngineer(templateData)}
             <!-- This is where another Engineer will be added -->
+        </div>
         </div>
     </div>
 </body>
