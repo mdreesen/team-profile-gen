@@ -63,7 +63,7 @@ module.exports = templateData => {
 
         <!-- This code is going to be for the Engineer's -->
         <div class="row">
-            ${generateEngineer(templateData)}
+            ${templateData.engProfile.map(engineer => generateEngineer(engineer))}
             <!-- This is where another Engineer will be added -->
         </div>
     </div>
