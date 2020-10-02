@@ -10,6 +10,7 @@ const generateManager = manager => {
     `;
 };
 
+
 const generateEngineer = engineer => {
     return `
             <div class="card text-white bg-dark mb-3 mt-3 mx-auto" style="width: 18rem;">
@@ -27,6 +28,7 @@ const generateEngineer = engineer => {
                     </div>
                     `;
 };
+
 
 module.exports = templateData => {
     console.log(templateData);
